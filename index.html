@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warung Nasi Lumbung Lambung GLC</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍚</text></svg>">
+  
+  <!-- Google Fonts: DM Serif Display & DM Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    :root {
+      --forest: #294c37;
+      --forest-deep: #173524;
+      --cream: #f7f4ec;
+      --paper: #fffdf8;
+      --clay: #b5573f;
+      --muted: #71776f;
+      --line: #dedfd7;
+      --text: #1c261d;
+      --star: #dfa72e;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .font-serif-display {
+      font-family: "DM Serif Display", serif;
+      font-weight: 400;
+    }
+
+    .hero-title {
+      font-family: "DM Serif Display", serif;
+      font-weight: 400;
+      font-size: clamp(2.85rem, 5.5vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.035em;
+      color: var(--text);
+    }
+
+    .section-title {
+      font-family: "DM Serif Display", serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 3.5vw, 2.55rem);
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .eyebrow {
+      color: var(--clay);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background-color: var(--forest);
+      color: #ffffff;
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--forest-deep);
+      border-color: var(--forest-deep);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--forest);
+      border: 1px solid var(--forest);
+      border-radius: 999px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--forest);
+      color: #ffffff;
+      border-color: var(--forest);
+    }
+
+    .btn-outline:active {
+      transform: scale(0.98);
+    }
+
+    .service-pill {
+      padding: 0.9rem 1.15rem;
+      border: 1px solid var(--line);
+      background-color: var(--cream);
+      color: var(--forest);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* Tab Navigation */
+    .tab-btn {
+      position: relative;
+      padding: 0.75rem 0.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--muted);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-btn.active {
+      color: var(--clay);
+      border-bottom-color: var(--clay);
+    }
+
+    /* Segmented Control Pills */
+    .segment-btn {
+      padding: 0.45rem 1.05rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background-color: #ffffff;
+      color: var(--text);
+      transition: all 0.18s ease;
+      cursor: pointer;
+    }
+
+    .segment-btn:hover {
+      border-color: var(--forest);
+      color: var(--forest);
+    }
+
+    .segment-btn.active {
+      background-color: var(--forest);
+      color: #ffffff;
+      border-color: var(--forest);
+    }
+
+    /* Info Box & Cards */
+    .info-box {
+      border: 1px solid var(--line);
+      padding: 1.35rem;
+      background-color: #ffffff;
+      min-height: 9.2rem;
+    }
+
+    .menu-img-wrap {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 0.25rem;
+      background-color: var(--cream);
+    }
+
+    .menu-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .menu-card:hover .menu-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    /* Sidebar Cart */
+    .cart-sidebar {
+      background-color: var(--cream);
+      border-left: 1px solid var(--line);
+    }
+
+    .qty-btn {
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--forest);
+      color: var(--forest);
+      background-color: #ffffff;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .qty-btn:hover {
+      background-color: var(--forest);
+      color: #ffffff;
+    }
+
+    /* Custom Radio */
+    input[type="radio"] {
+      accent-color: var(--forest);
+      width: 1.05rem;
+      height: 1.05rem;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--paper);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c8cabf;
+      border-radius: 999px;
+    }
+
+    /* Toast Animation */
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .toast-enter {
+      animation: slideUpFade 0.25s ease forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col lg:flex-row">
+
+  <!-- MAIN CONTENT AREA (Left/Center) -->
+  <main class="flex-1 w-full pb-28 lg:pb-20">
+    <div class="max-w-[1220px] mx-auto px-5 sm:px-8 lg:px-12 pt-8 sm:pt-11">
+      
+      <!-- HERO SECTION -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        <div class="lg:col-span-6 space-y-4">
+          <div class="eyebrow">Pilihan warga Cipondoh</div>
+          <h1 class="hero-title">Warung Nasi Lumbung Lambung GLC</h1>
+          
+          <div class="text-[0.95rem] text-[#71776f] pt-1">
+            <strong class="text-[#294c37] font-bold">4,9 <span class="text-[#dfa72e] tracking-wider">★★★★★</span></strong>
+            &nbsp; <span id="hero-review-count">208</span> ulasan &nbsp;·&nbsp; Rp25–50 rb
+          </div>
+          
+          <p class="text-[1.02rem] leading-relaxed text-[#1c261d] max-w-lg pb-2">
+            Masakan rumahan yang hangat, jujur, dan selalu bikin ingin kembali.
+          </p>
+          
+          <div class="pt-1">
+            <a
+              id="directions-link"
+              href="https://www.google.com/maps/dir/?api=1&destination=Ruko%20CBD%20Greenlake%20Blok%20L%20No.%207%2C%20RT.006%2FRW.003%2C%20Ketapang%2C%20Kec.%20Cipondoh%2C%20Kota%20Tangerang%2C%20Banten%2015158"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary inline-flex items-center justify-center px-6 py-3 text-sm"
+            >
+              Buka petunjuk arah
+            </a>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <figure class="m-0">
+            <div class="overflow-hidden rounded-[0.25rem] bg-[#f7f4ec] aspect-[4/3] shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1584455486010-760bd0b28fc2?auto=format&fit=crop&w=1200&q=85"
+                alt="Masakan rumahan khas Indonesia"
+                class="w-full h-full object-cover"
+                onerror="this.src='https://placehold.co/900x675/f7f4ec/294c37?text=Warung+Nasi+Lumbung+Lambung'"
+              />
+            </div>
+            <figcaption class="text-xs text-[#71776f] mt-2 text-center">
+              Masakan rumahan khas Indonesia
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- DIVIDER -->
+      <hr class="border-t border-[#dedfd7] my-8" />
+
+      <!-- SERVICE BAR (3 Columns) -->
+      <section class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-9">
+        <div class="service-pill rounded-[0.2rem]">✓ Makan di tempat</div>
+        <div class="service-pill rounded-[0.2rem]">✓ Bawa pulang</div>
+        <div class="service-pill rounded-[0.2rem]">✓ Halal</div>
+      </section>
+
+      <!-- INTERACTIVE TABS NAVIGATION -->
+      <nav class="flex gap-7 border-b border-[#dedfd7] mb-8" aria-label="Navigasi Halaman">
+        <button type="button" class="tab-btn active" data-tab="ringkasan" onclick="switchTab('ringkasan')">
+          Ringkasan
+        </button>
+        <button type="button" class="tab-btn" data-tab="menu" onclick="switchTab('menu')">
+          Semua Menu
+        </button>
+        <button type="button" class="tab-btn" data-tab="ulasan" onclick="switchTab('ulasan')">
+          Ulasan
+        </button>
+      </nav>
+
+      <!-- TAB 1: RINGKASAN -->
+      <section id="tab-ringkasan" class="tab-panel space-y-10">
+        <div>
+          <h2 class="section-title mb-5">Informasi warung</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="info-box rounded-[0.25rem]">
+              <div class="font-bold text-[#1c261d] mb-2">📍 Lokasi</div>
+              <p class="text-[0.84rem] text-[#71776f] leading-relaxed">
+                Ruko CBD Greenlake Blok L No. 7, RT.006/RW.003, Ketapang, Kec. Cipondoh, Kota Tangerang, Banten 15158
+              </p>
+            </div>
+            <div class="info-box rounded-[0.25rem]">
+              <div class="font-bold text-[#1c261d] mb-2">◷ Jam buka</div>
+              <p class="text-[0.84rem] text-[#71776f] leading-relaxed">
+                Buka hari ini<br />
+                Tutup pukul 20.00
+              </p>
+            </div>
+            <div class="info-box rounded-[0.25rem]">
+              <div class="font-bold text-[#1c261d] mb-2">☎ Telepon</div>
+              <p class="text-[0.84rem] text-[#71776f] leading-relaxed">
+                0877-7526-7898<br />
+                Rp25.000–50.000/orang
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-baseline justify-between mb-5">
+            <h3 class="font-serif-display text-[1.85rem] text-[#1c261d]">Menu favorit</h3>
+            <button
+              type="button"
+              onclick="switchTab('menu')"
+              class="text-sm font-semibold text-[#294c37] hover:text-[#173524] underline underline-offset-4 cursor-pointer"
+            >
+              Lihat semua menu →
+            </button>
+          </div>
+          <div id="favorite-menu-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: SEMUA MENU -->
+      <section id="tab-menu" class="tab-panel hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <h2 class="section-title">Semua menu</h2>
+          
+          <!-- Segmented Control Filter -->
+          <div>
+            <div class="text-xs font-medium text-[#71776f] mb-2">Kategori</div>
+            <div id="category-filters" class="flex flex-wrap gap-2" role="group" aria-label="Filter Kategori">
+              <button type="button" class="segment-btn active" data-category="Semua" onclick="filterCategory('Semua')">Semua</button>
+              <button type="button" class="segment-btn" data-category="Nasi" onclick="filterCategory('Nasi')">Nasi</button>
+              <button type="button" class="segment-btn" data-category="Berkuah" onclick="filterCategory('Berkuah')">Berkuah</button>
+              <button type="button" class="segment-btn" data-category="Camilan" onclick="filterCategory('Camilan')">Camilan</button>
+              <button type="button" class="segment-btn" data-category="Minuman" onclick="filterCategory('Minuman')">Minuman</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="all-menu-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-8 pt-2">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+
+      <!-- TAB 3: ULASAN -->
+      <section id="tab-ulasan" class="tab-panel hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left Column: Reviews List -->
+          <div class="lg:col-span-7">
+            <h2 class="section-title mb-3">Ulasan pelanggan</h2>
+            <div class="text-lg mb-1">
+              <span class="text-[#dfa72e] tracking-widest">★★★★★</span> &nbsp;
+              <strong class="text-[#1c261d]">4,9</strong>
+            </div>
+            <div id="reviews-count-label" class="text-xs text-[#71776f] mb-5">208 ulasan</div>
+            
+            <div id="reviews-list" class="divide-y divide-[#dedfd7] border-t border-[#dedfd7]">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Right Column: Write Review Form -->
+          <div class="lg:col-span-5 bg-white border border-[#dedfd7] rounded-[0.35rem] p-6">
+            <h2 class="section-title text-[2rem] mb-4">Tulis ulasan</h2>
+            
+            <form id="review-form" class="space-y-4" onsubmit="handleReviewSubmit(event)">
+              <div>
+                <label for="reviewer-name" class="block text-sm font-medium text-[#1c261d] mb-1.5">
+                  Nama Anda
+                </label>
+                <input
+                  id="reviewer-name"
+                  type="text"
+                  placeholder="Masukkan nama Anda"
+                  class="w-full px-3.5 py-2.5 text-sm bg-[#fffdf8] border border-[#dedfd7] rounded-[0.35rem] focus:outline-none focus:border-[#294c37]"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-[#1c261d] mb-1.5">
+                  Rating bintang
+                </label>
+                <div id="star-selector" class="flex items-center gap-1.5" role="radiogroup" aria-label="Pilih rating bintang">
+                  <button type="button" data-star="1" onclick="selectRating(1)" class="star-pick text-2xl text-[#dedfd7] hover:scale-110 transition cursor-pointer" aria-label="1 Bintang">★</button>
+                  <button type="button" data-star="2" onclick="selectRating(2)" class="star-pick text-2xl text-[#dedfd7] hover:scale-110 transition cursor-pointer" aria-label="2 Bintang">★</button>
+                  <button type="button" data-star="3" onclick="selectRating(3)" class="star-pick text-2xl text-[#dedfd7] hover:scale-110 transition cursor-pointer" aria-label="3 Bintang">★</button>
+                  <button type="button" data-star="4" onclick="selectRating(4)" class="star-pick text-2xl text-[#dedfd7] hover:scale-110 transition cursor-pointer" aria-label="4 Bintang">★</button>
+                  <button type="button" data-star="5" onclick="selectRating(5)" class="star-pick text-2xl text-[#dedfd7] hover:scale-110 transition cursor-pointer" aria-label="5 Bintang">★</button>
+                  <span id="rating-hint" class="text-xs text-[#71776f] ml-2">Pilih bintang</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1.5">
+                  <label for="reviewer-text" class="block text-sm font-medium text-[#1c261d]">
+                    Ceritakan pengalaman Anda
+                  </label>
+                  <span id="char-counter" class="text-xs text-[#71776f]">0/500</span>
+                </div>
+                <textarea
+                  id="reviewer-text"
+                  rows="4"
+                  maxlength="500"
+                  oninput="updateCharCount()"
+                  placeholder="Bagaimana rasa makanan dan pelayanannya?"
+                  class="w-full px-3.5 py-2.5 text-sm bg-[#fffdf8] border border-[#dedfd7] rounded-[0.35rem] focus:outline-none focus:border-[#294c37]"
+                ></textarea>
+              </div>
+
+              <div id="review-feedback-msg" class="hidden text-xs font-medium px-3.5 py-2.5 rounded-[0.35rem]"></div>
+
+              <button type="submit" class="btn-outline w-full py-2.5 text-sm cursor-pointer">
+                Kirim ulasan
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- DESKTOP STICKY SIDEBAR CART / MOBILE DRAWER -->
+  <div id="cart-backdrop" onclick="toggleMobileCart(false)" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden"></div>
+
+  <aside
+    id="cart-sidebar"
+    class="cart-sidebar fixed lg:sticky top-0 right-0 z-50 h-dvh w-[88vw] max-w-[360px] lg:w-[350px] xl:w-[380px] shrink-0 flex flex-col transform translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out"
+    aria-label="Keranjang Pesanan"
+  >
+    <div class="p-6 sm:p-7 flex-1 overflow-y-auto flex flex-col">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-serif-display text-[2.1rem] leading-none text-[#1c261d]">Pesanan Anda</h2>
+        <button
+          type="button"
+          onclick="toggleMobileCart(false)"
+          class="lg:hidden w-8 h-8 rounded-full border border-[#dedfd7] bg-white text-[#1c261d] flex items-center justify-center text-sm font-bold"
+          aria-label="Tutup keranjang"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Cart Content Container -->
+      <div id="cart-content" class="flex-1 flex flex-col">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </aside>
+
+  <!-- MOBILE FLOATING CART BAR -->
+  <div id="mobile-cart-bar" class="fixed bottom-4 left-4 right-4 z-30 lg:hidden">
+    <button
+      type="button"
+      onclick="toggleMobileCart(true)"
+      class="btn-primary w-full py-3.5 px-5 shadow-lg flex items-center justify-between text-sm"
+    >
+      <span class="flex items-center gap-2.5">
+        <span class="bg-white/20 px-2.5 py-0.5 rounded-full text-xs font-bold" id="mobile-cart-badge">0 item</span>
+        <span>Lihat Pesanan Anda</span>
+      </span>
+      <span class="font-bold" id="mobile-cart-total">Rp0</span>
+    </button>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-container" class="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 lg:left-8 lg:translate-x-0 z-50 pointer-events-none"></div>
+
+  <script>
+    // ==========================================
+    // DATA KONFIGURASI & MENU (Sesuai Kode Python)
+    // ==========================================
+    const PHONE = "6287775267898";
+    const ADDRESS = "Ruko CBD Greenlake Blok L No. 7, RT.006/RW.003, Ketapang, Kec. Cipondoh, Kota Tangerang, Banten 15158";
+
+    const MENU = [
+      {
+        name: "Nasi Jeruk Ayam Pedas",
+        description: "Nasi jeruk, ayam suwir pedas, telur, dan sambal.",
+        category: "Nasi",
+        price: 38000,
+        image: "https://images.unsplash.com/photo-1666239308347-4292ea2ff777?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Baso Lohoa Komplit",
+        description: "Kuah hangat, baso lohoa, sayuran, dan bawang goreng.",
+        category: "Berkuah",
+        price: 32000,
+        image: "https://images.unsplash.com/photo-1707271914006-627b89038143?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Nasi Oncom Leunca",
+        description: "Oncom leunca, bakwan sayur, dan lalapan segar.",
+        category: "Nasi",
+        price: 28000,
+        image: "https://images.unsplash.com/photo-1694111133919-e365928cc252?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Nasi Ayam Serundeng",
+        description: "Ayam goreng, serundeng kelapa, tahu, dan sambal merah.",
+        category: "Nasi",
+        price: 36000,
+        image: "https://images.unsplash.com/photo-1586511930877-d20ef1e5d3c6?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Nasi Daging Sambal Ijo",
+        description: "Daging empuk, sambal hijau, tumis buncis, dan kerupuk.",
+        category: "Nasi",
+        price: 45000,
+        image: "https://images.unsplash.com/photo-1630315500315-43112e2bfd88?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Soto Ayam Kampung",
+        description: "Soto bening, ayam kampung, kol, soun, dan perkedel.",
+        category: "Berkuah",
+        price: 34000,
+        image: "https://images.unsplash.com/photo-1687419950105-b1cdeb6c66bc?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Bakwan Sayur",
+        description: "Bakwan renyah dengan wortel, kol, dan daun bawang.",
+        category: "Camilan",
+        price: 15000,
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Tahu Isi Pedas",
+        description: "Tahu goreng berisi sayuran dengan cabai rawit.",
+        category: "Camilan",
+        price: 18000,
+        image: "https://images.unsplash.com/photo-1762305194201-077e7e23ccf2?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Es Teh Lemon",
+        description: "Teh melati, lemon segar, dan gula aren.",
+        category: "Minuman",
+        price: 12000,
+        image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Es Jeruk Peras",
+        description: "Jeruk peras segar dengan pilihan gula normal atau sedikit.",
+        category: "Minuman",
+        price: 15000,
+        image: "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        name: "Kopi Susu Gula Aren",
+        description: "Espresso, susu segar, dan gula aren.",
+        category: "Minuman",
+        price: 18000,
+        image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=85"
+      }
+    ];
+
+    // ==========================================
+    // APPLICATION STATE
+    // ==========================================
+    const state = {
+      cart: {}, // { [itemName]: quantity }
+      orderType: "Bawa pulang",
+      orderNote: "",
+      activeTab: "ringkasan",
+      selectedCategory: "Semua",
+      selectedRating: 0,
+      reviews: [
+        {
+          name: "Cva Cavalera",
+          rating: 5,
+          text: "Menunya segar, tempatnya bersih, dan harganya masih oke. BEST!"
+        },
+        {
+          name: "Deren Firdaus",
+          rating: 5,
+          text: "Makanan enak, comfort food, harga murah. Sudah langganan terus!"
+        }
+      ]
+    };
+
+    // ==========================================
+    // HELPER FUNCTIONS
+    // ==========================================
+    function rupiah(value) {
+      return "Rp" + value.toLocaleString("id-ID");
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement("div");
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function menuByName(name) {
+      return MENU.find((item) => item.name === name);
+    }
+
+    function showToast(message) {
+      const container = document.getElementById("toast-container");
+      const toast = document.createElement("div");
+      toast.className = "toast-enter bg-[#173524] text-white text-xs sm:text-sm font-medium px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2";
+      toast.innerHTML = `<span class="text-[#dfa72e]">✓</span> <span>${escapeHtml(message)}</span>`;
+      container.innerHTML = "";
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transition = "opacity 0.25s ease";
+        setTimeout(() => toast.remove(), 250);
+      }, 2200);
+    }
+
+    // ==========================================
+    // TAB & FILTER NAVIGATION
+    // ==========================================
+    function switchTab(tabName) {
+      state.activeTab = tabName;
+
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.tab === tabName);
+      });
+
+      document.querySelectorAll(".tab-panel").forEach((panel) => {
+        panel.classList.add("hidden");
+      });
+
+      const target = document.getElementById(`tab-${tabName}`);
+      if (target) target.classList.remove("hidden");
+    }
+
+    function filterCategory(category) {
+      state.selectedCategory = category;
+
+      document.querySelectorAll(".segment-btn").forEach((btn) => {
+        btn.classList.toggle("active", btn.dataset.category === category);
+      });
+
+      renderAllMenu();
+    }
+
+    // ==========================================
+    // RENDER MENU CARDS
+    // ==========================================
+    function renderFavoriteMenu() {
+      const grid = document.getElementById("favorite-menu-grid");
+      const favorites = MENU.slice(0, 3);
+
+      grid.innerHTML = favorites
+        .map(
+          (item) => `
+          <article class="menu-card flex flex-col">
+            <div class="menu-img-wrap mb-3">
+              <img
+                src="${item.image}"
+                alt="${escapeHtml(item.name)}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x450/f7f4ec/294c37?text=${encodeURIComponent(item.name)}'"
+              />
+            </div>
+            <h4 class="font-serif-display text-[1.35rem] leading-snug text-[#1c261d] min-h-[3.1rem] mb-1">
+              ${escapeHtml(item.name)}
+            </h4>
+            <div class="text-[#294c37] font-bold mb-3">${rupiah(item.price)}</div>
+            <button
+              type="button"
+              onclick="addToCart('${item.name.replace(/'/g, "\\'")}')"
+              class="btn-outline w-full py-2.5 text-sm mt-auto cursor-pointer"
+            >
+              Tambah ke pesanan
+            </button>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    function renderAllMenu() {
+      const grid = document.getElementById("all-menu-grid");
+      const filtered =
+        state.selectedCategory === "Semua"
+          ? MENU
+          : MENU.filter((item) => item.category === state.selectedCategory);
+
+      grid.innerHTML = filtered
+        .map(
+          (item) => `
+          <article class="menu-card flex flex-col">
+            <div class="menu-img-wrap mb-3">
+              <img
+                src="${item.image}"
+                alt="${escapeHtml(item.name)}"
+                loading="lazy"
+                onerror="this.src='https://placehold.co/600x450/f7f4ec/294c37?text=${encodeURIComponent(item.name)}'"
+              />
+            </div>
+            <div class="text-[#b5573f] uppercase tracking-[0.1em] text-[0.65rem] font-bold">
+              ${escapeHtml(item.category)}
+            </div>
+            <h4 class="font-serif-display text-[1.35rem] leading-snug text-[#1c261d] my-1.5 min-h-[3.1rem]">
+              ${escapeHtml(item.name)}
+            </h4>
+            <p class="text-[#71776f] text-[0.8rem] leading-relaxed min-h-[3.2rem] mb-2">
+              ${escapeHtml(item.description)}
+            </p>
+            <div class="text-[#294c37] font-bold mb-3">${rupiah(item.price)}</div>
+            <button
+              type="button"
+              onclick="addToCart('${item.name.replace(/'/g, "\\'")}')"
+              class="btn-outline w-full py-2.5 text-sm mt-auto cursor-pointer"
+            >
+              Tambah
+            </button>
+          </article>
+        `
+        )
+        .join("");
+    }
+
+    // ==========================================
+    // CART & WHATSAPP ORDER LOGIC
+    // ==========================================
+    function addToCart(name) {
+      state.cart[name] = (state.cart[name] || 0) + 1;
+      renderCart();
+      showToast(`${name} ditambahkan ke pesanan`);
+    }
+
+    function changeQuantity(name, delta) {
+      const nextQty = (state.cart[name] || 0) + delta;
+      if (nextQty <= 0) {
+        delete state.cart[name];
+      } else {
+        state.cart[name] = nextQty;
+      }
+      renderCart();
+    }
+
+    function updateOrderType(value) {
+      state.orderType = value;
+      updateWhatsAppHref();
+    }
+
+    function updateOrderNote(value) {
+      state.orderNote = value;
+      updateWhatsAppHref();
+    }
+
+    function buildWhatsAppUrl() {
+      const lines = ["Halo Warung Nasi Lumbung Lambung GLC, saya ingin memesan:", ""];
+      let total = 0;
+
+      for (const [name, quantity] of Object.entries(state.cart)) {
+        const item = menuByName(name);
+        if (!item) continue;
+        const subtotal = item.price * quantity;
+        total += subtotal;
+        lines.push(`• ${quantity}x ${name} — ${rupiah(subtotal)}`);
+      }
+
+      lines.push("", `Tipe pesanan: ${state.orderType}`);
+      if (state.orderNote.trim()) {
+        lines.push(`Catatan: ${state.orderNote.trim()}`);
+      }
+      lines.push(
+        `Total: ${rupiah(total)}`,
+        "",
+        "Mohon konfirmasi ketersediaan dan waktu pesanan. Terima kasih."
+      );
+
+      return `https://wa.me/${PHONE}?text=${encodeURIComponent(lines.join("\n"))}`;
+    }
+
+    function updateWhatsAppHref() {
+      const waBtn = document.getElementById("whatsapp-order-btn");
+      if (waBtn) {
+        waBtn.href = buildWhatsAppUrl();
+      }
+    }
+
+    function renderCart() {
+      const container = document.getElementById("cart-content");
+      const entries = Object.entries(state.cart);
+      const totalItems = entries.reduce((sum, [, qty]) => sum + qty, 0);
+
+      // Update mobile floating bar
+      document.getElementById("mobile-cart-badge").textContent = `${totalItems} item`;
+
+      if (entries.length === 0) {
+        document.getElementById("mobile-cart-total").textContent = "Rp0";
+        container.innerHTML = `
+          <p class="text-[0.86rem] text-[#71776f] leading-relaxed">
+            Keranjang masih kosong. Tambahkan menu favorit Anda.
+          </p>
+        `;
+        return;
+      }
+
+      let total = 0;
+      const itemsHtml = entries
+        .map(([name, quantity]) => {
+          const item = menuByName(name);
+          const subtotal = item.price * quantity;
+          total += subtotal;
+          const safeArg = name.replace(/'/g, "\\'");
+
+          return `
+            <div class="py-3.5 border-b border-[#dedfd7]/70 last:border-b-0">
+              <div class="font-bold text-[0.95rem] text-[#1c261d]">${escapeHtml(item.name)}</div>
+              <div class="text-xs text-[#71776f] mt-0.5 mb-2.5">
+                ${quantity} × ${rupiah(item.price)} = <span class="font-semibold text-[#1c261d]">${rupiah(subtotal)}</span>
+              </div>
+              <div class="grid grid-cols-3 items-center max-w-[160px]">
+                <button type="button" onclick="changeQuantity('${safeArg}', -1)" class="qty-btn" aria-label="Kurangi jumlah">−</button>
+                <div class="text-center font-semibold text-sm">${quantity}</div>
+                <button type="button" onclick="changeQuantity('${safeArg}', 1)" class="qty-btn" aria-label="Tambah jumlah">+</button>
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+
+      document.getElementById("mobile-cart-total").textContent = rupiah(total);
+
+      container.innerHTML = `
+        <div class="divide-y divide-[#dedfd7]">
+          ${itemsHtml}
+        </div>
+
+        <div class="border-t border-[#dedfd7] mt-3 pt-4 text-[1.15rem] flex items-center justify-between">
+          <span>Total</span>
+          <strong class="text-[#1c261d]">${rupiah(total)}</strong>
+        </div>
+
+        <div class="mt-5 space-y-4">
+          <div>
+            <div class="text-xs font-semibold text-[#1c261d] mb-2">Pesanan untuk</div>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2.5 text-sm cursor-pointer">
+                <input
+                  type="radio"
+                  name="order_type"
+                  value="Bawa pulang"
+                  ${state.orderType === "Bawa pulang" ? "checked" : ""}
+                  onchange="updateOrderType(this.value)"
+                />
+                <span>Bawa pulang</span>
+              </label>
+              <label class="flex items-center gap-2.5 text-sm cursor-pointer">
+                <input
+                  type="radio"
+                  name="order_type"
+                  value="Makan di tempat"
+                  ${state.orderType === "Makan di tempat" ? "checked" : ""}
+                  onchange="updateOrderType(this.value)"
+                />
+                <span>Makan di tempat</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label for="order-note-input" class="block text-xs font-semibold text-[#1c261d] mb-1.5">
+              Catatan untuk dapur
+            </label>
+            <textarea
+              id="order-note-input"
+              rows="2"
+              placeholder="Contoh: sambal dipisah"
+              oninput="updateOrderNote(this.value)"
+              class="w-full px-3 py-2 text-sm bg-white border border-[#dedfd7] rounded-[0.35rem] focus:outline-none focus:border-[#294c37]"
+            >${escapeHtml(state.orderNote)}</textarea>
+          </div>
+
+          <a
+            id="whatsapp-order-btn"
+            href="${buildWhatsAppUrl()}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary w-full py-3 px-4 text-sm flex items-center justify-center gap-2 shadow-sm"
+          >
+            <span>Pesan via WhatsApp</span>
+          </a>
+
+          <p class="text-[0.75rem] text-[#71776f] leading-relaxed">
+            Pesanan akan dikonfirmasi langsung oleh pihak warung.
+          </p>
+        </div>
+      `;
+    }
+
+    function toggleMobileCart(open) {
+      const sidebar = document.getElementById("cart-sidebar");
+      const backdrop = document.getElementById("cart-backdrop");
+
+      if (open) {
+        sidebar.classList.remove("translate-x-full");
+        backdrop.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      } else {
+        sidebar.classList.add("translate-x-full");
+        backdrop.classList.add("hidden");
+        document.body.style.overflow = "";
+      }
+    }
+
+    // ==========================================
+    // REVIEWS SYSTEM
+    // ==========================================
+    function renderReviews() {
+      const list = document.getElementById("reviews-list");
+      const totalCount = 208 + Math.max(0, state.reviews.length - 2);
+
+      document.getElementById("reviews-count-label").textContent = `${totalCount} ulasan`;
+      document.getElementById("hero-review-count").textContent = totalCount;
+
+      list.innerHTML = state.reviews
+        .map((rev) => {
+          const stars = "★".repeat(rev.rating) + "☆".repeat(5 - rev.rating);
+          return `
+            <div class="py-4">
+              <strong class="text-[#294c37] font-bold text-[0.96rem]">${escapeHtml(rev.name)}</strong>
+              <div class="text-[#dfa72e] tracking-widest text-sm my-0.5">${stars}</div>
+              <p class="text-[#454b45] text-[0.9rem] leading-relaxed mt-1">${escapeHtml(rev.text)}</p>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    function selectRating(rating) {
+      state.selectedRating = rating;
+      const labels = ["", "Kurang", "Cukup", "Bagus", "Sangat Bagus", "Luar Biasa!"];
+      document.getElementById("rating-hint").textContent = `${rating}/5 — ${labels[rating]}`;
+
+      document.querySelectorAll(".star-pick").forEach((btn) => {
+        const starVal = Number(btn.dataset.star);
+        btn.style.color = starVal <= rating ? "#dfa72e" : "#dedfd7";
+      });
+    }
+
+    function updateCharCount() {
+      const text = document.getElementById("reviewer-text").value;
+      document.getElementById("char-counter").textContent = `${text.length}/500`;
+    }
+
+    function handleReviewSubmit(event) {
+      event.preventDefault();
+      const nameInput = document.getElementById("reviewer-name");
+      const textInput = document.getElementById("reviewer-text");
+      const msgBox = document.getElementById("review-feedback-msg");
+
+      const name = nameInput.value.trim();
+      const text = textInput.value.trim();
+      const rating = state.selectedRating;
+
+      if (!name || !text || rating === 0) {
+        msgBox.className = "block text-xs font-medium px-3.5 py-2.5 rounded-[0.35rem] bg-[#b5573f]/10 text-[#b5573f] border border-[#b5573f]/30";
+        msgBox.textContent = "Lengkapi nama, rating, dan ulasan Anda.";
+        return;
+      }
+
+      state.reviews.unshift({ name, rating, text });
+      renderReviews();
+
+      // Reset form
+      nameInput.value = "";
+      textInput.value = "";
+      selectRating(0);
+      document.getElementById("rating-hint").textContent = "Pilih bintang";
+      updateCharCount();
+
+      msgBox.className = "block text-xs font-medium px-3.5 py-2.5 rounded-[0.35rem] bg-[#294c37]/10 text-[#294c37] border border-[#294c37]/30";
+      msgBox.textContent = "Terima kasih. Ulasan Anda sudah ditambahkan.";
+    }
+
+    // ==========================================
+    // INITIALIZATION
+    // ==========================================
+    window.addEventListener("DOMContentLoaded", () => {
+      renderFavoriteMenu();
+      renderAllMenu();
+      renderReviews();
+      renderCart();
+    });
+  </script>
+</body>
+</html>
